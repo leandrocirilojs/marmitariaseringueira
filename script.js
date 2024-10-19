@@ -1,20 +1,3 @@
-/*const bebidas = [
-    { nome: "Heineken", categoria: "Cerveja", tipo: "Lager", preco: 10.00 },
-    { nome: "Budweiser", categoria: "Cerveja", tipo: "Lager", preco: 8.50 },
-    { nome: "Stella Artois", categoria: "Cerveja", tipo: "Premium Lager", preco: 12.00 },
-    { nome: "Vodka Smirnoff", categoria: "Destilado", tipo: "Vodka", preco: 15.00 },
-    { nome: "Jack Daniel's", categoria: "Destilado", tipo: "Whiskey", preco: 20.00 },
-    { nome: "Concha y Toro Reservado", categoria: "Vinho", tipo: "Tinto", preco: 45.00 },
-    { nome: "Caipirinha", categoria: "Coquetel", ingredientes: ["Cachaça", "limão", "açúcar", "gelo"], preco: 18.00 },
-    { nome: "Coca-Cola 600ml: "Refrigerante", preco: 6.00 },
-    { nome: "Suco de Laranja Natural", categoria: "Suco", preco: 8.00 }
-];
-
-// Armazenando no LocalStorage
-localStorage.setItem('bebidas', JSON.stringify(bebidas));
-*/
-
-
 // Carregar bebidas do LocalStorage e preencher o menu de bebidas
 
 // Função para carregar as bebidas de um arquivo JSON externo
@@ -63,7 +46,6 @@ function adicionarBebida() {
 
         itensPedido.push(itemPedido);
         atualizarTabelaPedidos();
-       
     }
 }
 
@@ -135,25 +117,13 @@ function removerItem(index) {
     atualizarTabelaPedidos();
 }
 
-
-// Função para remover um item
-function removerItem(index) {
-    itensPedido.splice(index, 1);
-    atualizarTabelaItens();
-}
-
-// Função para finalizar o pedido
 // Adicionar evento de mudança no select do garçom
 document.getElementById('garcom').addEventListener('change', function() {
     const outroGarcomInput = document.getElementById('outroGarcom');
-    if (this.value === 'Outros') {
-        outroGarcomInput.style.display = 'block';
-    } else {
-        outroGarcomInput.style.display = 'none';
-    }
+    outroGarcomInput.style.display = this.value === 'Outros' ? 'block' : 'none';
 });
 
-// Modificar a função de finalizar pedido para incluir o valor correto do garçom
+// Função para finalizar o pedido
 function finalizarPedido() {
     const mesa = document.getElementById('mesa').value;
     let garcom = document.getElementById('garcom').value;
@@ -204,9 +174,15 @@ function carregarPedidos() {
 function atualizarHistorico() {
     const historicoLista = document.getElementById('historico-lista');
     historicoLista.innerHTML = '';
-    pedidos.forEach(pedido => {
+    pedidos.forEach((pedido, index) => {
         const li = document.createElement('li');
         li.textContent = `Mesa ${pedido.mesa} - Garçom: ${pedido.garcom} - Total: R$${pedido.totalPedido.toFixed(2)}`;
+        
+        // Adicionar evento de clique para abrir o modal com os detalhes do pedido
+        li.addEventListener('click', function() {
+            abrirModal(pedido);
+        });
+
         historicoLista.appendChild(li);
     });
 }
@@ -222,57 +198,4 @@ function abrirModal(pedido) {
     // Limpar os detalhes do pedido antes de preencher com novas informações
     detalhes.innerHTML = '';
 
-    // Adicionar informações da mesa e garçom
-    const infoBasica = `<p><strong>Mesa:</strong> ${pedido.mesa}</p>
-                        <p><strong>Garçom:</strong> ${pedido.garcom}</p>`;
-    detalhes.innerHTML = infoBasica;
-
-    // Adicionar detalhes dos itens do pedido
-    const listaItens = document.createElement('ul');
-    pedido.itens.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `${item.quantidade}x ${item.item} - R$${item.preco.toFixed(2)} (Total: R$${item.total.toFixed(2)})`;
-        listaItens.appendChild(li);
-    });
-    detalhes.appendChild(listaItens);
-
-    // Adicionar total do pedido
-    const total = document.createElement('p');
-    total.innerHTML = `<strong>Total do Pedido:</strong> R$${pedido.totalPedido.toFixed(2)}`;
-    detalhes.appendChild(total);
-
-    // Exibir o modal
-    modal.style.display = 'flex';
-}
-
-// Função para fechar o modal
-document.querySelector('.close').addEventListener('click', function() {
-    document.getElementById('modal').style.display = 'none';
-});
-
-// Fechar o modal ao clicar fora da área de conteúdo
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-
-
-// Modificar a função para atualizar o histórico de pedidos
-function atualizarHistorico() {
-    const historicoLista = document.getElementById('historico-lista');
-    historicoLista.innerHTML = '';
-    pedidos.forEach((pedido, index) => {
-        const li = document.createElement('li');
-        li.textContent = `Mesa ${pedido.mesa} - Garçom: ${pedido.garcom} - Total: R$${pedido.totalPedido.toFixed(2)}`;
-        
-        // Adicionar evento de clique para abrir o modal com os detalhes do pedido
-        li.addEventListener('click', function() {
-            abrirModal(pedido);
-        });
-
-        historicoLista.appendChild(li);
-    });
-}
+    // Adicionar
