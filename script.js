@@ -45,9 +45,25 @@ function removerItem(index) {
 }
 
 // Função para finalizar o pedido
+// Adicionar evento de mudança no select do garçom
+document.getElementById('garcom').addEventListener('change', function() {
+    const outroGarcomInput = document.getElementById('outroGarcom');
+    if (this.value === 'Outros') {
+        outroGarcomInput.style.display = 'block';
+    } else {
+        outroGarcomInput.style.display = 'none';
+    }
+});
+
+// Modificar a função de finalizar pedido para incluir o valor correto do garçom
 function finalizarPedido() {
     const mesa = document.getElementById('mesa').value;
-    const garcom = document.getElementById('garcom').value;
+    let garcom = document.getElementById('garcom').value;
+    
+    // Verificar se o campo "Outros" foi selecionado e utilizar o nome do outro garçom
+    if (garcom === 'Outros') {
+        garcom = document.getElementById('outroGarcom').value;
+    }
 
     if (mesa && garcom && itensPedido.length > 0) {
         const totalPedido = itensPedido.reduce((acc, item) => acc + item.total, 0);
