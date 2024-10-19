@@ -63,6 +63,8 @@ function adicionarBebida() {
 
         itensPedido.push(itemPedido);
         atualizarTabelaPedidos();
+       //Apagar
+        atualizarTabelaItens()
     }
 }
 
