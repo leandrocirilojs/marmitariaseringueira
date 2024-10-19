@@ -6,7 +6,7 @@
     { nome: "Jack Daniel's", categoria: "Destilado", tipo: "Whiskey", preco: 20.00 },
     { nome: "Concha y Toro Reservado", categoria: "Vinho", tipo: "Tinto", preco: 45.00 },
     { nome: "Caipirinha", categoria: "Coquetel", ingredientes: ["Cachaça", "limão", "açúcar", "gelo"], preco: 18.00 },
-    { nome: "Coca-Cola", categoria: "Refrigerante", preco: 6.00 },
+    { nome: "Coca-Cola 600ml: "Refrigerante", preco: 6.00 },
     { nome: "Suco de Laranja Natural", categoria: "Suco", preco: 8.00 }
 ];
 
@@ -63,8 +63,7 @@ function adicionarBebida() {
 
         itensPedido.push(itemPedido);
         atualizarTabelaPedidos();
-       //Apagar
-        atualizarTabelaItens()
+       
     }
 }
 
