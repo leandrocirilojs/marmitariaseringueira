@@ -200,6 +200,18 @@ function carregarPedidos() {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Função para atualizar o histórico de pedidos
 function atualizarHistorico(pedidosParaMostrar = pedidos) {
     const historicoLista = document.getElementById('historico-lista');
@@ -237,7 +249,25 @@ function aplicarFiltros() {
 
 
 
+function finalizarPedido() {
+    const mesa = document.getElementById('mesa').value;
+    let garcom = document.getElementById('garcom').value;
 
+    if (garcom === 'Outros') {
+        garcom = document.getElementById('outroGarcom').value;
+    }
+
+    if (mesa && garcom && itensPedido.length > 0) {
+        const totalPedido = itensPedido.reduce((acc, item) => acc + item.total, 0);
+        const pedido = { mesa, garcom, itens: [...itensPedido], totalPedido, data: new Date().toISOString() };
+        pedidos.push(pedido);
+        salvarPedidos();
+        atualizarHistorico();
+        limparPedido();
+    } else {
+        alert('Preencha todos os campos e adicione ao menos um item.');
+    }
+}
 
 
 
