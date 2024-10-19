@@ -201,15 +201,46 @@ function carregarPedidos() {
 }
 
 // Função para atualizar o histórico de pedidos
-function atualizarHistorico() {
+function atualizarHistorico(pedidosParaMostrar = pedidos) {
     const historicoLista = document.getElementById('historico-lista');
     historicoLista.innerHTML = '';
-    pedidos.forEach(pedido => {
+    pedidosParaMostrar.forEach((pedido, index) => {
         const li = document.createElement('li');
         li.textContent = `Mesa ${pedido.mesa} - Garçom: ${pedido.garcom} - Total: R$${pedido.totalPedido.toFixed(2)}`;
+        
+        li.addEventListener('click', function() {
+            abrirModal(pedido);
+        });
+
         historicoLista.appendChild(li);
     });
 }
+
+
+document.getElementById('aplicar-filtros').addEventListener('click', aplicarFiltros);
+
+function aplicarFiltros() {
+    const dataFiltro = document.getElementById('filtro-data').value;
+    const mesaFiltro = document.getElementById('filtro-mesa').value.toLowerCase();
+    const garcomFiltro = document.getElementById('filtro-garcom').value.toLowerCase();
+
+    const pedidosFiltrados = pedidos.filter(pedido => {
+        const dataPedido = new Date(pedido.data).toISOString().split('T')[0]; // Ajuste se necessário
+        const mesaMatches = mesaFiltro ? pedido.mesa.toString().toLowerCase().includes(mesaFiltro) : true;
+        const garcomMatches = garcomFiltro ? pedido.garcom.toLowerCase().includes(garcomFiltro) : true;
+
+        return (dataFiltro ? dataPedido === dataFiltro : true) && mesaMatches && garcomMatches;
+    });
+
+    atualizarHistorico(pedidosFiltrados);
+}
+
+
+
+
+
+
+
 
 // Carregar pedidos do localStorage ao iniciar
 carregarPedidos();
