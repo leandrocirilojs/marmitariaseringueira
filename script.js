@@ -259,59 +259,6 @@ window.addEventListener('click', function(event) {
 
 
 
-
-
-
-
-
-// Função para abrir a modal
-function abrirModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'block';
-    carregarBebidasNoModal(); // Carrega bebidas na modal
-}
-
-// Função para fechar a modal
-function fecharModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-}
-
-// Função para carregar as bebidas na modal
-function carregarBebidasNoModal() {
-    const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
-    const selectNovaBebida = document.getElementById('nova-bebida');
-    selectNovaBebida.innerHTML = '';
-
-    bebidas.forEach((bebida, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.text = `${bebida.nome} - R$${bebida.preco.toFixed(2)}`;
-        selectNovaBebida.appendChild(option);
-    });
-}
-
-// Função para adicionar novo pedido da modal
-function adicionarNovoPedido() {
-    const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
-    const bebidaSelecionadaIndex = document.getElementById('nova-bebida').value;
-    const quantidade = parseInt(document.getElementById('quantidade').value);
-    const bebidaSelecionada = bebidas[bebidaSelecionadaIndex];
-
-    if (bebidaSelecionada) {
-        const itemPedido = {
-            item: bebidaSelecionada.nome,
-            preco: bebidaSelecionada.preco,
-            quantidade: quantidade,
-            total: bebidaSelecionada.preco * quantidade
-        };
-
-        itensPedido.push(itemPedido);
-        atualizarTabelaPedidos();
-        adicionarHistoricoPedido(itemPedido);
-        fecharModal(); // Fechar a modal após adicionar
-    }
-}
 // Modificar a função para atualizar o histórico de pedidos
 function atualizarHistorico() {
     const historicoLista = document.getElementById('historico-lista');
