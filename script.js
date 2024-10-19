@@ -1,4 +1,4 @@
-const bebidas = [
+/*const bebidas = [
     { nome: "Heineken", categoria: "Cerveja", tipo: "Lager", preco: 10.00 },
     { nome: "Budweiser", categoria: "Cerveja", tipo: "Lager", preco: 8.50 },
     { nome: "Stella Artois", categoria: "Cerveja", tipo: "Premium Lager", preco: 12.00 },
@@ -12,27 +12,42 @@ const bebidas = [
 
 // Armazenando no LocalStorage
 localStorage.setItem('bebidas', JSON.stringify(bebidas));
-
+*/
 
 
 // Carregar bebidas do LocalStorage e preencher o menu de bebidas
+
+// Função para carregar as bebidas de um arquivo JSON externo
 function carregarBebidas() {
-    const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
-    const selectBebida = document.getElementById('bebida');
+    fetch('bebidas.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar o arquivo de bebidas');
+            }
+            return response.json();
+        })
+        .then(bebidas => {
+            // Salvar no LocalStorage (opcional, para cache local)
+            localStorage.setItem('bebidas', JSON.stringify(bebidas));
+            
+            // Preencher o menu de bebidas
+            const selectBebida = document.getElementById('bebida');
+            selectBebida.innerHTML = '';
 
-    // Limpar o select antes de adicionar as opções
-    selectBebida.innerHTML = '';
-
-    // Adicionar as bebidas como opções
-    bebidas.forEach((bebida, index) => {
-        const option = document.createElement('option');
-        option.value = index;  // Usar o índice como valor para buscar depois
-        option.text = `${bebida.nome} - R$${bebida.preco.toFixed(2)}`;
-        selectBebida.appendChild(option);
-    });
+            bebidas.forEach((bebida, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = `${bebida.nome} - R$${bebida.preco.toFixed(2)}`;
+                selectBebida.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Não foi possível carregar a lista de bebidas.');
+        });
 }
 
-// Adicionar a bebida selecionada ao pedido
+// Função para adicionar bebida ao pedido
 function adicionarBebida() {
     const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
     const bebidaSelecionadaIndex = document.getElementById('bebida').value;
@@ -42,7 +57,7 @@ function adicionarBebida() {
         const itemPedido = {
             item: bebidaSelecionada.nome,
             preco: bebidaSelecionada.preco,
-            quantidade: 1,  // Por padrão, começa com 1 unidade
+            quantidade: 1,
             total: bebidaSelecionada.preco
         };
 
@@ -53,7 +68,6 @@ function adicionarBebida() {
 
 // Função para inicializar o menu de bebidas ao carregar a página
 document.addEventListener('DOMContentLoaded', carregarBebidas);
-
 
 let pedidos = [];
 let itensPedido = [];
