@@ -130,7 +130,7 @@ table, th, td {
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 8px 10px;
     text-align: center;
 }
 
@@ -163,7 +163,7 @@ td button:hover {
 }
 
 select{
-    padding: 14px;
+    padding: 8px;
 }
 .acoes {
     display: flex;
