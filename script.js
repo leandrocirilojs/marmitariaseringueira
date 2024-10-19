@@ -115,3 +115,64 @@ function atualizarHistorico() {
 
 // Carregar pedidos do localStorage ao iniciar
 carregarPedidos();
+
+// Função para abrir o modal com os detalhes do pedido
+function abrirModal(pedido) {
+    const modal = document.getElementById('modal');
+    const detalhes = document.getElementById('detalhes-pedido');
+
+    // Limpar os detalhes do pedido antes de preencher com novas informações
+    detalhes.innerHTML = '';
+
+    // Adicionar informações da mesa e garçom
+    const infoBasica = `<p><strong>Mesa:</strong> ${pedido.mesa}</p>
+                        <p><strong>Garçom:</strong> ${pedido.garcom}</p>`;
+    detalhes.innerHTML = infoBasica;
+
+    // Adicionar detalhes dos itens do pedido
+    const listaItens = document.createElement('ul');
+    pedido.itens.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.quantidade}x ${item.item} - R$${item.preco.toFixed(2)} (Total: R$${item.total.toFixed(2)})`;
+        listaItens.appendChild(li);
+    });
+    detalhes.appendChild(listaItens);
+
+    // Adicionar total do pedido
+    const total = document.createElement('p');
+    total.innerHTML = `<strong>Total do Pedido:</strong> R$${pedido.totalPedido.toFixed(2)}`;
+    detalhes.appendChild(total);
+
+    // Exibir o modal
+    modal.style.display = 'flex';
+}
+
+// Função para fechar o modal
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'none';
+});
+
+// Fechar o modal ao clicar fora da área de conteúdo
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Modificar a função para atualizar o histórico de pedidos
+function atualizarHistorico() {
+    const historicoLista = document.getElementById('historico-lista');
+    historicoLista.innerHTML = '';
+    pedidos.forEach((pedido, index) => {
+        const li = document.createElement('li');
+        li.textContent = `Mesa ${pedido.mesa} - Garçom: ${pedido.garcom} - Total: R$${pedido.totalPedido.toFixed(2)}`;
+        
+        // Adicionar evento de clique para abrir o modal com os detalhes do pedido
+        li.addEventListener('click', function() {
+            abrirModal(pedido);
+        });
+
+        historicoLista.appendChild(li);
+    });
+}
