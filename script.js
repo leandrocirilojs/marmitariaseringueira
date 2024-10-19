@@ -1,21 +1,3 @@
-/*const bebidas = [
-    { nome: "Heineken", categoria: "Cerveja", tipo: "Lager", preco: 10.00 },
-    { nome: "Budweiser", categoria: "Cerveja", tipo: "Lager", preco: 8.50 },
-    { nome: "Stella Artois", categoria: "Cerveja", tipo: "Premium Lager", preco: 12.00 },
-    { nome: "Vodka Smirnoff", categoria: "Destilado", tipo: "Vodka", preco: 15.00 },
-    { nome: "Jack Daniel's", categoria: "Destilado", tipo: "Whiskey", preco: 20.00 },
-    { nome: "Concha y Toro Reservado", categoria: "Vinho", tipo: "Tinto", preco: 45.00 },
-    { nome: "Caipirinha", categoria: "Coquetel", ingredientes: ["Cachaça", "limão", "açúcar", "gelo"], preco: 18.00 },
-    { nome: "Coca-Cola 600ml: "Refrigerante", preco: 6.00 },
-    { nome: "Suco de Laranja Natural", categoria: "Suco", preco: 8.00 }
-];
-
-// Armazenando no LocalStorage
-localStorage.setItem('bebidas', JSON.stringify(bebidas));
-*/
-
-
-// Carregar bebidas do LocalStorage e preencher o menu de bebidas
 
 // Função para carregar as bebidas de um arquivo JSON externo
 function carregarBebidas() {
