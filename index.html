@@ -17,8 +17,16 @@
             <input type="number" id="mesa" placeholder="Número da Mesa">
 
             <label for="garcom">Garçom:</label>
-            <input type="text" id="garcom" placeholder="Nome do Garçom">
+<select id="garcom">
+    <option value="Marco">Marco</option>
+    <option value="Leandro">Leandro</option>
+    <option value="Marcinho">Marcinho</option>
+    <option value="Outros">Outros</option>
+</select>
 
+<!-- Campo adicional que só aparece se "Outros" for selecionado -->
+<input type="text" id="outroGarcom" placeholder="Nome do Garçom" style="display: none;">
+            
             <label for="item">Item:</label>
             <input type="text" id="item" placeholder="Nome do Item">
 
