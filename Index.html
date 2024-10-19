@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Pedidos - Bar e Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Controle de Pedidos</h1>
 
+        <!-- Formulário para novo pedido -->
+        <div class="pedido-form">
+            <h2>Novo Pedido</h2>
+            <label for="mesa">Mesa:</label>
+            <input type="number" id="mesa" placeholder="Número da Mesa">
+
+            <label for="garcom">Garçom:</label>
+            <input type="text" id="garcom" placeholder="Nome do Garçom">
+
+            <label for="item">Item:</label>
+            <input type="text" id="item" placeholder="Nome do Item">
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" value="1">
+
+            <label for="preco">Preço Unitário:</label>
+            <input type="number" id="preco" step="0.01" placeholder="Preço do Item">
+
+            <button id="adicionar-item">Adicionar Item</button>
+        </div>
+
+        <!-- Tabela de itens do pedido -->
+        <div class="pedido-itens">
+            <h2>Itens do Pedido</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-itens">
+                    <!-- Os itens serão adicionados dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Controle de ações -->
+        <div class="acoes">
+            <button id="finalizar-pedido">Finalizar Pedido</button>
+            <button id="limpar-pedido">Limpar Pedido</button>
+        </div>
+
+        <!-- Histórico de Pedidos -->
+        <div class="historico-pedidos">
+            <h2>Histórico de Pedidos</h2>
+            <ul id="historico-lista">
+                <!-- O histórico será populado dinamicamente -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
