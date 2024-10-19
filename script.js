@@ -77,6 +77,33 @@ function atualizarTabelaItens() {
     });
 }
 
+function atualizarTabelaPedidos() {
+    const tabelaItens = document.getElementById('tabela-itens');
+    tabelaItens.innerHTML = '';  // Limpar a tabela antes de atualizá-la
+
+    itensPedido.forEach((item, index) => {
+        const row = tabelaItens.insertRow();
+        row.insertCell(0).textContent = item.item;
+        row.insertCell(1).textContent = item.quantidade;
+        row.insertCell(2).textContent = `R$${item.preco.toFixed(2)}`;
+        row.insertCell(3).textContent = `R$${item.total.toFixed(2)}`;
+
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = function() {
+            removerItem(index);
+        };
+        row.insertCell(4).appendChild(btnRemover);
+    });
+}
+
+// Função para remover um item do pedido
+function removerItem(index) {
+    itensPedido.splice(index, 1);
+    atualizarTabelaPedidos();
+}
+
+
 // Função para remover um item
 function removerItem(index) {
     itensPedido.splice(index, 1);
