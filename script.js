@@ -1,3 +1,42 @@
+// Carregar bebidas do LocalStorage e preencher o menu de bebidas
+function carregarBebidas() {
+    const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
+    const selectBebida = document.getElementById('bebida');
+
+    // Limpar o select antes de adicionar as opções
+    selectBebida.innerHTML = '';
+
+    // Adicionar as bebidas como opções
+    bebidas.forEach((bebida, index) => {
+        const option = document.createElement('option');
+        option.value = index;  // Usar o índice como valor para buscar depois
+        option.text = `${bebida.nome} - R$${bebida.preco.toFixed(2)}`;
+        selectBebida.appendChild(option);
+    });
+}
+
+// Adicionar a bebida selecionada ao pedido
+function adicionarBebida() {
+    const bebidas = JSON.parse(localStorage.getItem('bebidas')) || [];
+    const bebidaSelecionadaIndex = document.getElementById('bebida').value;
+    const bebidaSelecionada = bebidas[bebidaSelecionadaIndex];
+
+    if (bebidaSelecionada) {
+        const itemPedido = {
+            item: bebidaSelecionada.nome,
+            preco: bebidaSelecionada.preco,
+            quantidade: 1,  // Por padrão, começa com 1 unidade
+            total: bebidaSelecionada.preco
+        };
+
+        itensPedido.push(itemPedido);
+        atualizarTabelaPedidos();
+    }
+}
+
+// Função para inicializar o menu de bebidas ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarBebidas);
+
 
 let pedidos = [];
 let itensPedido = [];
