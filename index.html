@@ -10,14 +10,6 @@
     <div class="container">
 
 
-
-
-
-
-
-
-
-
         
         <h1>Sistema de Controle de Pedidos</h1>
 
@@ -37,6 +29,13 @@
 
 <!-- Campo adicional que só aparece se "Outros" for selecionado -->
 <input type="text" id="outroGarcom" placeholder="Nome do Garçom" style="display: none;">
+            <label for="bebida">Selecione uma Bebida:</label>
+<select id="bebida">
+    <!-- As opções serão preenchidas dinamicamente via JavaScript -->
+</select>
+<button onclick="adicionarBebida()">Adicionar Bebida</button>
+
+
             
             <label for="item">Item:</label>
             <input type="text" id="item" placeholder="Nome do Item">
