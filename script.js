@@ -121,7 +121,7 @@ function atualizarTabelaPedidos() {
         row.insertCell(3).textContent = `R$${item.total.toFixed(2)}`;
 
         const btnRemover = document.createElement('button');
-        btnRemover.textContent = 'Remover';
+        btnRemover.textContent = ' X ';
         btnRemover.onclick = function() {
             removerItem(index);
         };
