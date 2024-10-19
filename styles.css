@@ -158,6 +158,9 @@ td button:hover {
     background-color: #c82333;
 }
 
+select{
+    padding: 14px;
+}
 .acoes {
     display: flex;
     justify-content: space-between;
