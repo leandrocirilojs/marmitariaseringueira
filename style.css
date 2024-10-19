@@ -1,54 +1,85 @@
 
+/* Estilos Gerais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 900px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 h1, h2 {
     text-align: center;
+    color: #333;
 }
 
 label {
-    display: block;
+    font-weight: bold;
     margin-top: 10px;
+    display: block;
+    color: #555;
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+    outline: none;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px 15px;
+    padding: 12px 20px;
     background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+    width: 100%;
 }
 
 button:hover {
     background-color: #218838;
 }
 
+button:active {
+    background-color: #1e7e34;
+}
+
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
+    font-size: 16px;
 }
 
 table, th, td {
@@ -56,16 +87,87 @@ table, th, td {
 }
 
 th, td {
-    padding: 8px;
-    text-align: left;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+td {
+    background-color: #fdfdfd;
+    color: #555;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+td button:hover {
+    background-color: #c82333;
 }
 
 .acoes {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
+}
+
+.acoes button {
+    width: 48%;
 }
 
 .historico-pedidos ul {
     list-style-type: none;
     padding: 0;
+}
+
+.historico-pedidos li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.historico-pedidos li:hover {
+    transform: translateX(5px);
+    background-color: #e9ecef;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .acoes {
+        flex-direction: column;
+    }
+
+    .acoes button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    td, th {
+        padding: 8px 10px;
+    }
 }
