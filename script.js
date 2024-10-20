@@ -1,4 +1,4 @@
-Meu script deve ficar assim 
+
 
 // Carregar bebidas do LocalStorage e preencher o menu de bebidas
 
