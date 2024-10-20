@@ -1,5 +1,4 @@
 
-
 // Carregar bebidas do LocalStorage e preencher o menu de bebidas
 
 // Função para carregar as bebidas de um arquivo JSON externo
@@ -119,6 +118,14 @@ function removerItem(index) {
     itensPedido.splice(index, 1);
     atualizarTabelaPedidos();
 }
+
+
+// Função para remover um item
+function removerItem(index) {
+    itensPedido.splice(index, 1);
+    atualizarTabelaItens();
+}
+
 // Função para finalizar o pedido
 // Adicionar evento de mudança no select do garçom
 document.getElementById('garcom').addEventListener('change', function() {
