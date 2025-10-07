@@ -1,4 +1,3 @@
-// ==================== DATA MANAGEMENT ====================
 
 // Initialize data from localStorage
 let vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
