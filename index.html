@@ -113,15 +113,92 @@
                         <div class="form-group">
                             <label for="maintenanceType">Tipo de Manutenção *</label>
                             <select id="maintenanceType" required>
-                                <option value="">Selecione o tipo</option>
-                                <option value="Preventiva">Preventiva</option>
-                                <option value="Corretiva">Corretiva</option>
-                                <option value="Troca de Óleo">Troca de Óleo</option>
-                                <option value="Revisão">Revisão</option>
-                                <option value="Pneus">Pneus</option>
-                                <option value="Freios">Freios</option>
-                                <option value="Outros">Outros</option>
-                            </select>
+    <option value="">Selecione o tipo de manutenção</option>
+    
+    <!-- Manutenções Preventivas -->
+    <optgroup label="Manutenções Preventivas">
+        <option value="Troca de Óleo">Troca de Óleo e Filtro</option>
+        <option value="Alinhamento">Alinhamento e Balanceamento</option>
+        <option value="Rotação de Pneus">Rotação de Pneus</option>
+        <option value="Calibração">Calibração de Pneus</option>
+        <option value="Revisão Periódica">Revisão Periódica</option>
+        <option value="Lubrificação">Lubrificação</option>
+    </optgroup>
+    
+    <!-- Manutenções do Motor -->
+    <optgroup label="Sistema do Motor">
+        <option value="Correia Dentada">Troca de Correia Dentada</option>
+        <option value="Correia Alternador">Troca de Correia do Alternador</option>
+        <option value="Filtro de Ar">Troca de Filtro de Ar</option>
+        <option value="Filtro de Combustível">Troca de Filtro de Combustível</option>
+        <option value="Vela de Ignição">Troca de Velas de Ignição</option>
+        <option value="Cabos de Vela">Troca de Cabos de Vela</option>
+        <option value="Radiador">Limpeza do Radiador</option>
+        <option value="Líquido Arrefecimento">Troca de Líquido de Arrefecimento</option>
+    </optgroup>
+    
+    <!-- Sistema de Freios -->
+    <optgroup label="Sistema de Freios">
+        <option value="Pastilhas de Freio">Troca de Pastilhas de Freio</option>
+        <option value="Discos de Freio">Troca/Retifica de Discos</option>
+        <option value="Líquido de Freio">Troca de Líquido de Freio</option>
+        <option value="Tambor Freio">Troca de Lonas do Freio</option>
+        <option value="Kit Freio">Kit Completo de Freio</option>
+    </optgroup>
+    
+    <!-- Sistema Elétrico -->
+    <optgroup label="Sistema Elétrico">
+        <option value="Bateria">Troca de Bateria</option>
+        <option value="Alternador">Reparo do Alternador</option>
+        <option value="Motor de Arranque">Reparo do Motor de Arranque</option>
+        <option value="Lâmpadas">Troca de Lâmpadas</option>
+        <option value="Fusíveis">Troca de Fusíveis</option>
+    </optgroup>
+    
+    <!-- Suspensão e Direção -->
+    <optgroup label="Suspensão e Direção">
+        <option value="Amortecedores">Troca de Amortecedores</option>
+        <option value="Molas">Troca de Molas</option>
+        <option value="Pneus">Troca de Pneus</option>
+        <option value="Rodas">Balanceamento de Rodas</option>
+        <option value="Terminais de Direção">Troca de Terminais</option>
+        <option value="Buchas">Troca de Buchas</option>
+    </optgroup>
+    
+    <!-- Transmissão -->
+    <optgroup label="Transmissão">
+        <option value="Óleo Câmbio">Troca de Óleo do Câmbio</option>
+        <option value="Embreagem">Troca de Embreagem</option>
+        <option value="Kit Embreagem">Kit Completo de Embreagem</option>
+        <option value="Diferencial">Troca de Óleo do Diferencial</option>
+    </optgroup>
+    
+    <!-- Sistema de Escape -->
+    <optgroup label="Sistema de Escape">
+        <option value="Catalisador">Troca de Catalisador</option>
+        <option value="Silenciador">Troca de Silenciador</option>
+        <option value="Mangueira Escape">Troca de Mangueira de Escape</option>
+    </optgroup>
+    
+    <!-- Ar Condicionado -->
+    <optgroup label="Ar Condicionado">
+        <option value="Gás Ar Condicionado">Recarga de Gás</option>
+        <option value="Filtro Cabine">Troca de Filtro de Cabine</option>
+        <option value="Compressor">Reparo do Compressor</option>
+    </optgroup>
+    
+    <!-- Corretivas e Outros -->
+    <optgroup label="Outros Serviços">
+        <option value="Lavagem">Lavagem e Higienização</option>
+        <option value="Polimento">Polimento e Cristalização</option>
+        <option value="Funilaria">Serviços de Funilaria</option>
+        <option value="Pintura">Serviços de Pintura</option>
+        <option value="Mecânica Geral">Mecânica Geral</option>
+        <option value="Elétrica Geral">Elétrica Geral</option>
+        <option value="Diagnóstico">Diagnóstico Eletrônico</option>
+        <option value="Outros">Outros Serviços</option>
+    </optgroup>
+</select>
                         </div>
                         <div class="form-group">
                             <label for="maintenanceCost">Custo (R$) *</label>
