@@ -1,4 +1,4 @@
-* {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -384,8 +384,8 @@ tbody td {
 .vehicle-report-item {
     background: var(--bg-color);
     padding: 20px;
-    border-left: 4px solid var(--primary-color);
     border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
 }
 
 .vehicle-report-item h4 {
