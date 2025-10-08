@@ -1,4 +1,5 @@
 document.addEventListener(\'DOMContentLoaded\', () => {
+                          alert();
     const menuItemsContainer = document.getElementById(\'menu-items\');
     const cartItemsContainer = document.getElementById(\'cart-items\');
     const cartTotalSpan = document.getElementById(\'cart-total\');
