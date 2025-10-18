@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartSection = document.getElementById('cart');
     const deliveryAddressFields = document.getElementById('delivery-address-fields');
 
-    let cart = [];
+    let cart = loadCartFromLocalStorage();
 
     const menu = [
         {
@@ -82,12 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemToAdd = menu.find(item => item.id === itemId);
             cart.push({ ...itemToAdd, quantity: 1 });
         }
-        updateCart();
+        updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
     }
 
     function removeFromCart(itemId) {
         cart = cart.filter(item => item.id !== itemId);
-        updateCart();
+        updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
     }
 
     function updateQuantity(itemId, change) {
@@ -96,13 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
             item.quantity += change;
             if (item.quantity <= 0) {
                 removeFromCart(itemId);
-            } else {
-                updateCart();
             }
+            updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
         }
     }
 
+    function saveCartToLocalStorage() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function loadCartFromLocalStorage() {
+        const storedCart = localStorage.getItem('cart');
+        return storedCart ? JSON.parse(storedCart) : [];
+    }
+
     function updateCart() {
+        saveCartToLocalStorage(); // Salva o carrinho no localStorage a cada atualização
         cartItemsContainer.innerHTML = '';
         let total = 0;
         let itemCount = 0;
@@ -223,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 deliveryAddressFields.classList.add('hidden');
             }
-            updateCart();
+            updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
         });
     });
 
@@ -232,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingCartBtn.addEventListener('click', () => {
             menuSection.classList.add('hidden');
             cartSection.classList.remove('hidden');
-            updateCart();
+            updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
         });
     }
 
@@ -244,5 +253,5 @@ document.addEventListener('DOMContentLoaded', () => {
     checkoutBtn.addEventListener('click', generateWhatsAppLink);
 
     renderMenu();
-    updateCart();
+    updateCart(); // Renderiza o carrinho com os itens carregados do localStorage
 });
