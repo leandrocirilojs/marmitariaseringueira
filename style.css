@@ -37,27 +37,37 @@ body {
     align-items: center;
 }
 
-.ifood-logo-text {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--ifood-red);
-    margin: 0;
+.ifood-logo {
+    height: 35px;
 }
 
-.ifood-fab-cart {
-    position: relative;
-    border-radius: 50px;
-    padding: 0.8em 1.2em;
-    background-color: var(--ifood-red);
-    color: var(--ifood-white);
+.ifood-button {
     border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1em;
     font-weight: 600;
     transition: background-color 0.3s ease;
 }
 
-.ifood-fab-cart:hover {
+.ifood-button.primary {
+    background-color: var(--ifood-red);
+    color: var(--ifood-white);
+}
+
+.ifood-button.primary:hover {
     background-color: var(--ifood-dark-red);
+}
+
+.ifood-button.secondary {
+    background-color: var(--ifood-gray);
+    color: var(--ifood-text-color);
+    border: 1px solid #ccc;
+}
+
+.ifood-button.secondary:hover {
+    background-color: #e0e0e0;
 }
 
 .ifood-main {
@@ -82,10 +92,10 @@ body {
     font-weight: 700;
 }
 
-/* Grid 2 por linha */
+/* ⬇️ ATUALIZADO: agora exibe 2 itens por linha */
 .ifood-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
     gap: 2em;
 }
 
@@ -99,6 +109,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: scale(1.03);
 }
 
 .menu-item img {
@@ -144,49 +159,6 @@ body {
 
 .menu-item button:hover {
     background-color: var(--ifood-dark-red);
-}
-
-/* Modal Carrinho */
-.cart-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-
-.cart-modal.active {
-    display: flex;
-}
-
-.cart-modal-content {
-    background: var(--ifood-white);
-    width: 90%;
-    max-width: 500px;
-    border-radius: 12px;
-    padding: 2em;
-    position: relative;
-    max-height: 90%;
-    overflow-y: auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-.cart-modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: var(--ifood-dark-gray);
-}
-
-.cart-modal-close:hover {
-    color: var(--ifood-red);
 }
 
 .ifood-cart-items .cart-item {
@@ -288,6 +260,7 @@ body {
 }
 
 .ifood-cart-summary button {
+    margin-left: 1em;
     padding: 1em 2em;
     border-radius: 8px;
     font-size: 1.1em;
@@ -295,12 +268,25 @@ body {
     border: none;
     font-weight: 600;
     transition: background-color 0.3s ease;
+}
+
+#checkout-btn {
     background-color: var(--ifood-green);
     color: var(--ifood-white);
 }
 
-.ifood-cart-summary button:hover {
+#checkout-btn:hover {
     background-color: #218838;
+}
+
+#continue-shopping-btn {
+    background-color: var(--ifood-gray);
+    color: var(--ifood-text-color);
+    border: 1px solid #ccc;
+}
+
+#continue-shopping-btn:hover {
+    background-color: #e0e0e0;
 }
 
 .ifood-footer {
@@ -311,4 +297,121 @@ body {
     margin-top: 2em;
 }
 
-/*
+.hidden {
+    display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ifood-header {
+        padding: 1em;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .ifood-logo {
+        margin-bottom: 1em;
+    }
+
+    /* ⬇️ Aqui no celular volta a ser 1 item por linha */
+    .ifood-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .ifood-cart-items .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ifood-cart-items .cart-item-actions {
+        margin-top: 1em;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .ifood-cart-summary button {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 1em;
+    }
+}
+
+.ifood-order-details {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px solid #eee;
+}
+
+.ifood-order-details h3 {
+    font-size: 1.8em;
+    color: var(--ifood-text-color);
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.ifood-order-details h4 {
+    font-size: 1.2em;
+    color: var(--ifood-text-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: var(--ifood-dark-gray);
+    font-size: 0.95em;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--ifood-red);
+    box-shadow: 0 0 0 2px rgba(234, 29, 44, 0.2);
+}
+
+.delivery-fee {
+    font-weight: 600;
+    color: var(--ifood-red);
+    margin-top: 1em;
+    text-align: right;
+    font-size: 1.1em;
+}
+
+.ifood-logo-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--ifood-red);
+    margin: 0;
+}
+
+.ifood-fab-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    border-radius: 50px;
+    padding: 1em 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
