@@ -5,7 +5,7 @@
     --ifood-dark-gray: #666;
     --ifood-text-color: #333;
     --ifood-white: #FFFFFF;
-    --ifood-green: #28a745; /* Para botões de sucesso/WhatsApp */
+    --ifood-green: #28a745;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     padding: 1em 2em;
     display: flex;
-    justify-content: center; /* Centraliza o conteúdo do header */
+    justify-content: center;
     align-items: center;
     position: sticky;
     top: 0;
@@ -31,14 +31,14 @@ body {
 
 .header-content {
     width: 100%;
-    max-width: 1200px; /* Limita a largura do conteúdo do header */
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .ifood-logo {
-    height: 35px; /* Ajuste o tamanho do logo conforme necessário */
+    height: 35px;
 }
 
 .ifood-button {
@@ -92,9 +92,10 @@ body {
     font-weight: 700;
 }
 
+/* ⬇️ ATUALIZADO: agora exibe 2 itens por linha */
 .ifood-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
     gap: 2em;
 }
 
@@ -108,6 +109,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: scale(1.03);
 }
 
 .menu-item img {
@@ -309,6 +315,7 @@ body {
         margin-bottom: 1em;
     }
 
+    /* ⬇️ Aqui no celular volta a ser 1 item por linha */
     .ifood-grid-container {
         grid-template-columns: 1fr;
     }
@@ -330,8 +337,6 @@ body {
         margin-bottom: 1em;
     }
 }
-
-
 
 .ifood-order-details {
     margin-top: 2em;
@@ -391,8 +396,6 @@ body {
     font-size: 1.1em;
 }
 
-
-
 .ifood-logo-text {
     font-size: 1.8em;
     font-weight: 700;
@@ -400,19 +403,15 @@ body {
     margin: 0;
 }
 
-
-
-
 .ifood-fab-cart {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    border-radius: 50px; /* Para um formato mais arredondado */
+    border-radius: 50px;
     padding: 1em 1.5em;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
