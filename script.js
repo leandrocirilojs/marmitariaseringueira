@@ -213,8 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (referencia) message += `Referência: ${referencia}\n`;
             if (complemento) message += `Complemento: ${complemento}\n`;
 
-            total += 6; // Adiciona a taxa de entrega
-            message += `\nTaxa de Entrega: R$ 6,00\n`;
+            total += 5; // Adiciona a taxa de entrega
+            message += `\nTaxa de Entrega: R$ 5,00\n`;
         }
 
         message += `\n**Total do Pedido:** R$ ${total.toFixed(2)}\n\n`;
