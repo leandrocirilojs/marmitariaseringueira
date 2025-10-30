@@ -201,12 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const bairro = document.getElementById('bairro').value;
             const referencia = document.getElementById('referencia').value;
             const complemento = document.getElementById('complemento').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            
 
             if (!rua || !numero || !bairro) {
                 alert('Por favor, preencha todos os campos de endereço para entrega.');
                 return;
             }
-
+            message += `\n**WhatsApp**\n`;
+            message += `${whatsapp}\n`
             message += `\n**Endereço de Entrega:**\n`;
             message += `Rua: ${rua}, ${numero}\n`;
             message += `Bairro: ${bairro}\n`;
