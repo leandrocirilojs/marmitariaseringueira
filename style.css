@@ -1,11 +1,14 @@
 :root {
-    --ifood-red: #9a42ff;
+    /* Cores iFood */
+    --ifood-red: #EA1D2C; /* Vermelho/Rosa vibrante do iFood */
     --ifood-dark-red: #D01A28;
-    --ifood-gray: #F0F0F0;
-    --ifood-dark-gray: #666;
-    --ifood-text-color: #333;
+    --ifood-gray: #F0F0F0; /* Fundo claro */
+    --ifood-light-gray: #FFFFFF; /* Fundo de seções/cards */
+    --ifood-text-color: #333333;
+    --ifood-dark-gray: #666666;
     --ifood-white: #FFFFFF;
-    --ifood-green: #28a745;
+    --ifood-green: #28a745; /* Cor para botão de checkout */
+    --ifood-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 body {
@@ -17,9 +20,10 @@ body {
     line-height: 1.6;
 }
 
+/* 1. Cabeçalho (Header) */
 .ifood-header {
     background-color: var(--ifood-white);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--ifood-shadow);
     padding: 1em 2em;
     display: flex;
     justify-content: center;
@@ -37,10 +41,14 @@ body {
     align-items: center;
 }
 
-.ifood-logo {
-    height: 35px;
+.ifood-logo-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--ifood-red);
+    margin: 0;
 }
 
+/* 2. Botões (Buttons) */
 .ifood-button {
     border: none;
     padding: 0.8em 1.5em;
@@ -48,7 +56,8 @@ body {
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
 .ifood-button.primary {
@@ -58,18 +67,21 @@ body {
 
 .ifood-button.primary:hover {
     background-color: var(--ifood-dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(234, 29, 44, 0.3);
 }
 
 .ifood-button.secondary {
-    background-color: var(--ifood-gray);
+    background-color: var(--ifood-light-gray);
     color: var(--ifood-text-color);
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
 }
 
 .ifood-button.secondary:hover {
-    background-color: #e0e0e0;
+    background-color: #e9e9e9;
 }
 
+/* 3. Layout Principal (Main Layout) */
 .ifood-main {
     padding: 2em;
     max-width: 1200px;
@@ -77,47 +89,50 @@ body {
 }
 
 .ifood-section {
-    background-color: var(--ifood-white);
+    background-color: var(--ifood-light-gray);
     padding: 2em;
     margin-bottom: 2em;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--ifood-shadow);
 }
 
 .section-title {
     color: var(--ifood-text-color);
-    text-align: center;
+    text-align: left; /* Alinhamento à esquerda para um visual mais limpo */
     margin-bottom: 1.5em;
     font-size: 2em;
     font-weight: 700;
+    border-bottom: 2px solid var(--ifood-gray);
+    padding-bottom: 0.5em;
 }
 
-/* ⬇️ ATUALIZADO: agora exibe 2 itens por linha */
+/* 4. Grid de Itens (Menu Grid) */
 .ifood-grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
-    gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Reduzindo um pouco o gap */
 }
 
 .menu-item {
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 12px; /* Aumentando o arredondamento */
     padding: 1.5em;
-    text-align: center;
     background-color: var(--ifood-white);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden; /* Para garantir que a imagem e bordas se ajustem */
 }
 
 .menu-item:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px); /* Efeito de elevação sutil */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item img {
-    max-width: 100%;
+    width: 100%;
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
@@ -125,42 +140,44 @@ body {
 }
 
 .menu-item h3 {
-    margin-top: 0;
+    margin: 0 0 0.5em 0;
     color: var(--ifood-text-color);
-    font-size: 1.3em;
-    font-weight: 600;
+    font-size: 1.4em; /* Aumentando um pouco o título */
+    font-weight: 700;
 }
 
 .menu-item p {
-    font-size: 0.95em;
+    font-size: 1em;
     color: var(--ifood-dark-gray);
     margin-bottom: 1em;
     flex-grow: 1;
 }
 
 .menu-item .price {
-    font-size: 1.4em;
+    font-size: 1.6em; /* Aumentando o preço */
     color: var(--ifood-red);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1em;
 }
 
 .menu-item button {
+    width: 100%;
     background-color: var(--ifood-red);
     color: var(--ifood-white);
     border: none;
-    padding: 0.8em 1.5em;
+    padding: 1em;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .menu-item button:hover {
     background-color: var(--ifood-dark-red);
 }
 
+/* 5. Carrinho (Cart) */
 .ifood-cart-items .cart-item {
     display: flex;
     justify-content: space-between;
@@ -176,25 +193,28 @@ body {
 .ifood-cart-items .cart-item-info {
     display: flex;
     align-items: center;
+    flex-grow: 1;
 }
 
 .ifood-cart-items .cart-item-info img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 8px;
     margin-right: 1em;
 }
 
 .ifood-cart-items .cart-item-details h4 {
-    margin: 0 0 0.5em 0;
+    margin: 0 0 0.2em 0;
     color: var(--ifood-text-color);
     font-size: 1.1em;
+    font-weight: 600;
 }
 
 .ifood-cart-items .cart-item-details p {
     margin: 0;
     color: var(--ifood-dark-gray);
+    font-weight: 700; /* Preço em negrito */
 }
 
 .ifood-cart-items .cart-item-actions {
@@ -202,72 +222,145 @@ body {
     align-items: center;
 }
 
-.ifood-cart-items .cart-item-actions button {
-    background-color: var(--ifood-red);
-    color: var(--ifood-white);
+.ifood-cart-items .cart-item-actions button[data-action="remove"] {
+    background-color: transparent;
+    color: var(--ifood-dark-gray);
     border: none;
-    padding: 0.5em 0.8em;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 0.5em;
     font-size: 0.9em;
     margin-left: 1em;
-    transition: background-color 0.3s ease;
+    text-transform: none;
 }
 
-.ifood-cart-items .cart-item-actions button:hover {
-    background-color: var(--ifood-dark-red);
+.ifood-cart-items .cart-item-actions button[data-action="remove"]:hover {
+    color: var(--ifood-red);
+    background-color: transparent;
 }
 
 .ifood-cart-items .cart-item-actions .quantity-controls {
     display: flex;
     align-items: center;
-    margin-left: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .ifood-cart-items .cart-item-actions .quantity-controls button {
-    background-color: #ccc;
+    background-color: var(--ifood-white);
     color: var(--ifood-text-color);
     border: none;
-    padding: 0.3em 0.6em;
-    border-radius: 3px;
+    padding: 0.5em 0.8em;
     cursor: pointer;
-    font-size: 0.9em;
-    margin: 0 0.2em;
+    font-size: 1em;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+    border-radius: 0;
 }
 
 .ifood-cart-items .cart-item-actions .quantity-controls button:hover {
-    background-color: #bbb;
+    background-color: var(--ifood-gray);
 }
 
 .ifood-cart-items .cart-item-actions .quantity-controls span {
     font-weight: 600;
-    margin: 0 0.5em;
+    padding: 0 10px;
     color: var(--ifood-text-color);
+    font-size: 1.1em;
 }
 
+/* 6. Detalhes do Pedido (Order Details) */
+.ifood-order-details {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px solid #eee;
+}
+
+.ifood-order-details h3 {
+    font-size: 1.8em;
+    color: var(--ifood-text-color);
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.ifood-order-details h4 {
+    font-size: 1.3em;
+    color: var(--ifood-text-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8em;
+    color: var(--ifood-text-color);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 0.8em;
+    transform: scale(1.2); /* Aumenta o tamanho do radio button */
+    accent-color: var(--ifood-red); /* Cor de destaque */
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--ifood-red);
+    box-shadow: 0 0 0 3px rgba(234, 29, 44, 0.1);
+}
+
+.delivery-fee {
+    font-weight: 700;
+    color: var(--ifood-red);
+    margin-top: 1.5em;
+    text-align: right;
+    font-size: 1.2em;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+/* 7. Resumo do Carrinho (Cart Summary) */
 .ifood-cart-summary {
     text-align: right;
     margin-top: 2em;
-    border-top: 1px solid #eee;
+    border-top: 2px solid var(--ifood-red); /* Linha de destaque para o total */
     padding-top: 1.5em;
 }
 
 .ifood-cart-summary p {
-    font-size: 1.6em;
-    font-weight: 700;
+    font-size: 1.8em;
+    font-weight: 800;
     margin-bottom: 1.5em;
     color: var(--ifood-text-color);
 }
 
 .ifood-cart-summary button {
     margin-left: 1em;
-    padding: 1em 2em;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    border: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    padding: 1.2em 2.5em; /* Aumentando o padding */
+    border-radius: 10px; /* Aumentando o arredondamento */
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 #checkout-btn {
@@ -289,35 +382,73 @@ body {
     background-color: #e0e0e0;
 }
 
+/* 8. Botão Flutuante (FAB Cart) */
+.ifood-fab-cart {
+    position: fixed;
+    bottom: 30px; /* Movendo um pouco para cima */
+    right: 30px;
+    z-index: 1000;
+    border-radius: 50px;
+    padding: 1em 1.8em; /* Aumentando o padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Sombra mais proeminente */
+    font-size: 1.1em;
+}
+
+/* 9. Rodapé (Footer) */
 .ifood-footer {
     text-align: center;
     padding: 1.5em;
     background-color: var(--ifood-text-color);
     color: var(--ifood-white);
     margin-top: 2em;
+    font-size: 0.9em;
 }
 
 .hidden {
     display: none;
 }
 
-/* Responsividade */
+/* 10. Responsividade (Responsiveness) */
 @media (max-width: 768px) {
-    .ifood-header {
+    .ifood-main {
         padding: 1em;
     }
 
-    .header-content {
-        flex-direction: column;
+    .ifood-header {
+        padding: 0.8em 1em;
     }
 
-    .ifood-logo {
-        margin-bottom: 1em;
+    .ifood-logo-text {
+        font-size: 1.5em;
     }
 
-    /* ⬇️ Aqui no celular volta a ser 1 item por linha */
+    .section-title {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    /* Apenas 1 item por linha em dispositivos móveis */
     .ifood-grid-container {
         grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+        padding: 1em;
+    }
+
+    .menu-item img {
+        height: 150px;
+    }
+
+    .menu-item h3 {
+        font-size: 1.2em;
+    }
+
+    .menu-item .price {
+        font-size: 1.4em;
     }
 
     .ifood-cart-items .cart-item {
@@ -331,87 +462,22 @@ body {
         justify-content: space-between;
     }
 
+    .ifood-cart-summary p {
+        font-size: 1.5em;
+    }
+
     .ifood-cart-summary button {
         width: 100%;
         margin-left: 0;
         margin-bottom: 1em;
+        font-size: 1.1em;
+        padding: 1em;
     }
-}
 
-.ifood-order-details {
-    margin-top: 2em;
-    padding-top: 2em;
-    border-top: 1px solid #eee;
-}
-
-.ifood-order-details h3 {
-    font-size: 1.8em;
-    color: var(--ifood-text-color);
-    margin-bottom: 1em;
-    text-align: center;
-}
-
-.ifood-order-details h4 {
-    font-size: 1.2em;
-    color: var(--ifood-text-color);
-    margin-top: 1.5em;
-    margin-bottom: 0.8em;
-}
-
-.form-group {
-    margin-bottom: 1.5em;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-    color: var(--ifood-dark-gray);
-    font-size: 0.95em;
-}
-
-.form-group input[type="radio"] {
-    margin-right: 0.5em;
-}
-
-.form-group input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 0.5em;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.form-group input[type="text"]:focus {
-    outline: none;
-    border-color: var(--ifood-red);
-    box-shadow: 0 0 0 2px rgba(234, 29, 44, 0.2);
-}
-
-.delivery-fee {
-    font-weight: 600;
-    color: var(--ifood-red);
-    margin-top: 1em;
-    text-align: right;
-    font-size: 1.1em;
-}
-
-.ifood-logo-text {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--ifood-red);
-    margin: 0;
-}
-
-.ifood-fab-cart {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    border-radius: 50px;
-    padding: 1em 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+    .ifood-fab-cart {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.8em 1.2em;
+        font-size: 1em;
+    }
+    }
